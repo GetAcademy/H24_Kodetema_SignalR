@@ -1,0 +1,22 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SignalR.Api", "SignalR.Api\SignalR.Api.csproj", "{B71E19B0-7BA2-43BF-ADAD-4A97BC8DC828}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SignalR.Domain", "SignalR.Domain\SignalR.Domain.csproj", "{EC7526A2-4952-44FE-8EF2-AB7C6D691477}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{B71E19B0-7BA2-43BF-ADAD-4A97BC8DC828}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B71E19B0-7BA2-43BF-ADAD-4A97BC8DC828}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B71E19B0-7BA2-43BF-ADAD-4A97BC8DC828}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B71E19B0-7BA2-43BF-ADAD-4A97BC8DC828}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EC7526A2-4952-44FE-8EF2-AB7C6D691477}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EC7526A2-4952-44FE-8EF2-AB7C6D691477}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EC7526A2-4952-44FE-8EF2-AB7C6D691477}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EC7526A2-4952-44FE-8EF2-AB7C6D691477}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal

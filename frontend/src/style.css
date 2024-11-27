@@ -1,0 +1,130 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap');
+@import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css');
+
+body {
+  font-family: 'Roboto', sans-serif;
+  background-color: #f4f4f9;
+  margin: 0;
+  padding: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  height: 100vh;
+}
+
+#app {
+  width: 100%;
+  max-width: 1200px; /* Increased max-width */
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+h1 {
+  text-align: center;
+  color: #333;
+  margin-bottom: 20px;
+  font-weight: 500;
+}
+
+ul {
+  list-style-type: none;
+  padding: 0;
+  width: 100%;
+  margin: 0;
+}
+
+li {
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 15px;
+  margin: 10px 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition: box-shadow 0.3s ease;
+  width: calc(100% - 22px); /* Adjust width to account for padding and border */
+  box-sizing: border-box; /* Include padding and border in the element's total width and height */
+}
+
+li:hover {
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.document-info {
+  display: flex;
+  align-items: center;
+  flex: 1; /* Flex-grow to take available space */
+  overflow: hidden; /* Ensure overflow content is hidden */
+}
+
+.document-info i {
+  font-size: 2rem;
+  color: #007bff;
+  margin-right: 15px;
+}
+
+.document-info div {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden; /* Ensure overflow content is hidden */
+}
+
+.document-info span {
+  display: block;
+  color: #555;
+  white-space: nowrap; /* Prevent text wrapping */
+  overflow: hidden; /* Hide overflow text */
+  text-overflow: ellipsis; /* Add ellipsis for overflow text */
+}
+
+.document-info .file-name {
+  font-weight: 500;
+  color: #333;
+}
+
+.document-info .owner {
+  color: #777;
+}
+
+.button-group {
+  display: flex;
+  gap: 10px;
+}
+
+button {
+  background-color: #007bff;
+  border: none;
+  border-radius: 4px;
+  color: white;
+  padding: 10px 15px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  display: flex;
+  align-items: center;
+}
+
+button i {
+  margin-right: 5px;
+}
+
+button:hover {
+  background-color: #0056b3;
+}
+
+button:disabled {
+  background-color: #ddd;
+  cursor: not-allowed;
+}
+
+.button-complete {
+  background-color: #28a745;
+}
+
+.button-complete:hover {
+  background-color: #218838;
+}
