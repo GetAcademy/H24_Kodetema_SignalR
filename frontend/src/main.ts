@@ -1,5 +1,4 @@
 import './style.css';
-import axios from 'axios';
 import * as signalR from '@microsoft/signalr';
 
 
@@ -27,12 +26,8 @@ interface Document {
     fileName: string;
 }
 
-
-
-
 async function updateOwner(id: number, ownerName: string) {
-    try {
-        // await axios.put(`${apiUrl}/document/updateOwner/${id}/${ownerName}`);
+    try {        
         await connection.send('UpdateOwner', id, ownerName);
         await renderDocuments();
     } catch (error) {
@@ -41,8 +36,7 @@ async function updateOwner(id: number, ownerName: string) {
 }
 
 async function releaseOwner(id: number) {
-    try {
-        // await axios.put(`${apiUrl}/document/updateOwner/${id}/release`);
+    try {        
         await connection.send('ReleaseOwner', id);
         await renderDocuments();
     } catch (error) {
@@ -51,8 +45,7 @@ async function releaseOwner(id: number) {
 }
 
 async function markAsCompleted(id: number) {
-    try {
-        // await axios.put(`${apiUrl}/document/complete/${id}`);
+    try {        
         await connection.send('MarkAsCompleted', id);
         await renderDocuments();
     } catch (error) {
@@ -60,8 +53,7 @@ async function markAsCompleted(id: number) {
     }
 }
 
-async function renderDocuments() {
-    // const documents = await fetchOpenDocuments();
+async function renderDocuments() {    
     const appDiv = document.querySelector<HTMLDivElement>('#app')!;
 
     appDiv.innerHTML = `
