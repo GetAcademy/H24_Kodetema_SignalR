@@ -128,3 +128,15 @@ button:disabled {
 .button-complete:hover {
   background-color: #218838;
 }
+
+.toast {
+  position: fixed;
+  top: 10%;
+  right: 20%;
+  background-color: #444;
+  color: #fff;
+  padding: 10px;
+  border-radius: 5px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+  z-index: 1000;
+}

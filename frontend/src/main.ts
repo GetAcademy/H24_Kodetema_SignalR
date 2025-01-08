@@ -1,16 +1,26 @@
 import './style.css';
 import * as signalR from '@microsoft/signalr';
 
-
-
+let connectedUsers: string[] = [];
 let documents: Document[] = [];
+let amountOfRefreshes: number = 0;
 const apiUrl = "https://localhost:7250";
 const myId: string = crypto.randomUUID().toString();
 const connection = new signalR.HubConnectionBuilder().withUrl(`${apiUrl}/documentHub`).build();
 
 connection.on("OpenDocumentsChanged", async (openDocuments: Document[])=> {
    documents = openDocuments;
+   amountOfRefreshes++;
    await renderDocuments();
+});
+
+connection.on("ConnectedUsersChanged", (users: string[]) => {
+    connectedUsers = users;
+    renderConnectedUsers();
+});
+
+connection.on("ShowNotification", (message: string) => {
+   showToast(message); 
 });
 
 await connection.start().catch(err => console.log(err));
@@ -53,13 +63,43 @@ async function markAsCompleted(id: number) {
     }
 }
 
+async function nudgeUser(userId: string) {
+    try {
+        await connection.send('NudgeUser', userId);        
+    } catch (error) {
+        console.error('Error nudging user:', error);
+    }
+}
+
+function showToast(message: string) {
+    const toast = document.createElement("div");
+    toast.className = "toast";
+    toast.innerText = message;
+    document.body.appendChild(toast);
+    
+    setTimeout(() => {
+        toast.remove();
+    }, 3000);
+}
+
+function renderConnectedUsers() {
+    const usersDiv = document.querySelector<HTMLDivElement>('#connected-users')!;
+    usersDiv.innerHTML = `
+        <h2>Connected users</h2>
+        <ul>
+            ${connectedUsers.map(user => `<li>${user}<button onclick="nudgeUser('${user}')" ${myId === user ? 'disabled' : ''}>Nudge</button></li>`).join('')}
+        </ul>
+    `;
+}
+
 async function renderDocuments() {    
     const appDiv = document.querySelector<HTMLDivElement>('#app')!;
 
     appDiv.innerHTML = `
     <h1>Document Manager</h1>
     ${myId}
-    <button onclick="renderDocuments()"><i class="fas fa-refresh"></i>Refresh</button>    
+    <div>Refresh count: ${amountOfRefreshes}</div>
+    <div id="connected-users"></div>
     <ul>
       ${documents.map(doc => `
         <li>
@@ -79,6 +119,7 @@ async function renderDocuments() {
       `).join('')}
     </ul>
   `;
+    renderConnectedUsers();
 }
 
 renderDocuments();
@@ -88,3 +129,6 @@ renderDocuments();
 (window as any).markAsCompleted = markAsCompleted;
 (window as any).myId = myId;
 (window as any).renderDocuments = renderDocuments;
+(window as any).showToast = showToast;
+(window as any).renderConnectedUsers = renderConnectedUsers;
+(window as any).nudgeUser = nudgeUser;
