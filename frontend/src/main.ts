@@ -23,9 +23,10 @@ connection.on("ShowNotification", (message: string) => {
    showToast(message); 
 });
 
-await connection.start().catch(err => console.log(err));
-
-await connection.send('RegisterId', myId);
+(async () => {
+    await connection.start().catch((err) => console.log(err));
+    await connection.send("RegisterId", myId);
+})();
 
 interface Document {
     id: number;
